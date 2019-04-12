@@ -76,16 +76,16 @@ public class filterproduct extends HttpServlet {
                         
                     }
                  out.println("/<table>");
-                 out.println();
                  
-                 out.println("<form action='org_product'><br><center>" +
-                        "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE ADDED : </label></h3><input type='text' name='aid'>\n" +
-                        "<button type='submit'>ADD</button>\n" +
-                        "</center><br>\n" +
-                        "</form>");
+                /* out.println("<form action='org_product'><br><center>" +
+"<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE REMOVED : </label></h3><input type='text' name='aid'>\n" +
+"<button type=\"submit\">REMOVE</button></center></form>");*/
                  out.println("<form action='rem_product'><br><center>" +
-"        <h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE REMOVED : </label></h3><input type='text' name='rid'>\n" +
-"      <button type=\"submit\">ADD</button></center></form>");
+"<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE REMOVED : </label></h3><input type='text' name='rid'>\n" +
+"      <button type=\"submit\">REMOVE</button></center></form>");
+                 out.println("<form action='org_product' method='post'><center>"+
+                         "<h3> <label style='color: skyblue'> ENTER THE E-MAIL OF VENDOR TO BE ADDED : </label></h3><input type=\"text\" name=\"aid\">\n" +
+"<button type='submit'>ADD</button><br><br>\n</form>" );
             }
             catch(Exception e)
             {
