@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+   <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+
+	function doSomething()
+	{
+		var opt = document.getElementById("option").value;
+		alert(opt);
+		if(opt == 02)
+		{
+			document.getElementById("adhar").style.visibility = "visible";
+			document.getElementById("adhar").style.display = "inline";
+
+			document.getElementById("adval").style.visibility = "visible";
+			document.getElementById("adval").style.display = "inline";
+
+			document.getElementById("exp").style.visibility = "visible";
+			document.getElementById("exp").style.display = "inline";
+
+			document.getElementById("wrkexp").style.visibility = "visible";
+			document.getElementById("wrkexp").style.display = "inline";
+
+			
+		}
+
+		else
+		{
+			document.getElementById("adhar").style.visibility = "hidden";
+			document.getElementById("adhar").style.display = "none";
+
+			document.getElementById("adval").style.visibility = "hidden";
+			document.getElementById("adval").style.display = "none";
+
+			document.getElementById("exp").style.visibility = "hidden";
+			document.getElementById("exp").style.display = "none";
+
+			document.getElementById("wrkexp").style.visibility = "hidden";
+			document.getElementById("wrkexp").style.display = "none";
+
+			
+		}
+	}
+		
+            function isNumberKey(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (!(charCode > 64 && (charCode < 91 || charCode > 96 && charCode < 123)))
+                {
+                    alert("Alphabets only..!!");
+                    return false;
+                }
+                     return true;
+            }
+            function checkpass()
+            {
+                var empt2 = document.getElementById("p1").value;
+                var empt3 = document.getElementById("p2").value;
+                
+                if(empt2 != empt3)
+                {
+                    alert("Please check your password");
+                    return false;
+                }
+                else 
+                {
+                    return true;
+                }
+                
+            }
+            function details()
+            {
+                var t1 = document.getElementById("s1").value;
+                if(t1 != "EMPLOYEE")
+                {
+                    alert("You are not an employee");
+                    return false;
+                }
+                else if(t1 != "VENDOR")
+                {
+                    alert("You are not a vendor");
+                    return false;
+                }
+                return true;
+            }
+            function required()
+             {
+                var empt1 = document.forms["form1"]["email"].value;
+                var empt2 = document.forms["form1"]["pass"].value;
+                var empt3 = document.forms["form1"]["cpass"].value;
+                var empt4 = document.forms["form1"]["uname"].value;
+                var empt5 = document.forms["form1"]["add"].value;
+                var empt6 = document.forms["form1"]["pno"].value;
+                var empt7 = document.forms["form1"]["city"].value;
+                var empt8 = document.forms["form1"]["state"].value;
+                var empt9 = document.forms["form1"]["s1"].value;
+                if (empt1=="" || empt2=="" || empt3=="" || empt4.value=="" || empt5.value=="" || empt6=="" || empt7=="" || empt8=="" || empt9=="")
+                {
+                    alert("Please input all the values");
+                    return false;
+                }
+                else 
+                {
+                    return true;
+                }
+              }
+              function isNumberKey1(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                {
+                    alert("Numbers only..!!");
+                    return false;
+                }
+                     return true;
+            }
+            
+            
+            
+        </script>
+        <style>
+body {font-family: Arial, Helvetica, sans-serif;background-image: url('bg.jpg');}
+form {border: 3px solid transparent;
+      width: 700px;
+      align-content: center;
+      
+}
+input[type=email], input[type=password],input[type=password],input[type=text],input[type=text],input[type=number],input[type=text],input[type=text]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-content: center;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 19%;
+}
+button:hover {
+  opacity: 0.8;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 12px 0 6px 0;
+  
+}
+
+img.customer {
+  width: 25%;
+  border-radius: 50%;
+ 
+}
+
+
+</style>
+    </head>
+    <body ><center>
+        
+        <form action="adddetails" method="post" name="form1" onsubmit="return required()">
+             
+            <fieldset style="border-color: aquamarine">   
+                <legend style="color:skyblue"><h2>CREATE NEW ACCOUNT</h2></legend>
+             <div class ="imgcontainer">
+             <img src="user.png" class="customer">
+             </div>
+            EMAIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="email" placeholder="Enter E-Mail" name="email"><br>
+            PASSWORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="password" placeholder="Enter Password" name="pass" id="p1"><br>
+            CONFIRM PASSWORD&nbsp;:&nbsp;&nbsp;<input type="password" placeholder="Enter Confirm Password" name="cpass" id="p2" ><br>
+            USERNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter Your Name" name="uname" onkeypress="return isNumberKey(event)"><br>
+            ADDRESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter Address" name="add"><br>
+            PHONE NUMBER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="number" placeholder="Enter Phone Number" name="pno" onkeypress="return isNumberKey1(event)"><br>
+            CITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter City" name="city" onkeypress="return isNumberKey(event)"><br>
+            STATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter State" name="state" onkeypress="return isNumberKey(event)"><br>
+            <br>
+            <div style="width:300px; float:left">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USERTYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<select id="option" name="s1" onchange="if (this.selectedIndex) doSomething();">
+                
+                <option value="00"></option>
+                <option value="01">CUSTOMER</option>
+                <option value="02">VENDOR</option>
+                <option value="03">EMPLOYEE</option>
+
+</select>
+               
+            </div>
+<br><Br>
+
+ 	<label id="adhar" style="visibility: hidden; display: none;">AADHAR ID:</label>
+<input type="text" style="visibility: hidden; display: none;" id="adval" name="aid"><br><br>
+
+
+        <label id="exp" style="visibility: hidden; display: none;">WORK EXPERIENCE:</label>
+<input type="text" style="visibility: hidden; display: none;" id="wrkexp" name="wexp"><br><br>
+
+
+        <label id="emp" style="visibility: hidden; display: none;">EMPLOYEE:</label>
+
+<input type="radio" style="visibility: hidden; display: none;" value="parttime" name="em" checked>
+<label id="adhar" style="visibility: hidden; display: none;" id="part">PART TIME EMPLOYEE</label>
+        
+<input type="radio" style="visibility: hidden; display: none;" value="fulltime" name="em">
+<label id="adhar" style="visibility: hidden; display: none;">FULL TIME EMPLOYEE </label><br><br>
+                
+
+<br><br>
+         
+            <center><button type="submit" onclick="return checkpass()">LOGIN</button></center>
+             </fieldset>
+        </form>
+    </center>
+    </body>
+</html>

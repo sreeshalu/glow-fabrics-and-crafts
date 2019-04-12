@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+         <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px transparent;
+      width: 500px;
+      align-content: center;
+}
+
+input[type=text], input[type=password], input[type=email] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc; 
+  box-sizing: border-box;
+  align-content: center;
+  
+  
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 4px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  align-content: center;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 12px 0 6px 0;
+  
+}
+
+img.login {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 8px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 4px;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 200px) {
+  span.psw {
+     display: block;
+     float: none;
+     
+  }
+ 
+}
+</style>
+        
+    </head>
+    
+    <body background="bg.jpg">
+       
+<center>
+    <br><br><br><br>
+<form action="changepasscustomer">
+   <fieldset style="border-color:aquamarine">   
+                <legend style="color:steelblue"><h2>CHANGE PASSWORD</h2></legend>
+  <div class="imgcontainer">
+    <img src="password.jpg" alt="login" class="login">
+  </div>
+
+    <div class="container" align="center">
+        <!-- <label for="email" style="color:steelblue"><b>ENTER E-MAIL : </b></label>
+    <input type="email" placeholder="Enter Your Mail ID" name="mail" required><br>-->
+        
+        <label for="cur" style="color:steelblue"><b>CURRENT PASSWORD : </b></label>
+    <input type="password" placeholder="Enter Current Password" name="curpass" required><br>
+
+    <label for="new" style="color:steelblue"><b>NEW PASSWORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
+    <input type="password" placeholder="Enter New Password" name="newpass" required><br>
+    
+    <label for="con" style="color:steelblue"><b>CONFIRM PASSWORD : </b></label>
+    <input type="password" placeholder="Enter Confirm Password" name="conpass" required><br>
+    
+   
+    <button><a href="changepasscustomer" style="text-decoration: none">CHANGE PASSWORD</a></button>
+  </div>
+   </fieldset>
+
+</form>
+</center>
+
+    
+    
+</html>

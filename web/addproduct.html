@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+   
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px transparent;
+      width: 500px;
+      align-content: center;
+}
+
+input[type=text]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc; 
+  box-sizing: border-box;
+  align-content: center;
+  
+  
+}
+input[type=file]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc; 
+  box-sizing: border-box;
+  align-content: center;
+  
+  
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 3px 0;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+  align-content: center;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+ 
+
+</style>
+        
+    </head>
+    <body >  
+       
+<center>
+    <br><br><br><br>
+    <form action="productadd" method="post">
+      
+       <label style="color:steelblue"><h2>ADD PRODUCT DETAILS</h2></label>
+       
+    <div class="container" align="center">
+
+    <label style="color:steelblue"><b>NAME &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </b></label>
+    <input type="text" placeholder="Enter Product Name" name="name" ><br>
+    
+    <label style="color:steelblue"><b>PRICE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </b></label>
+    <input type="text" placeholder="Enter Price" name="price" ><br>
+    
+    <label style="color:steelblue"><b>QUANTITY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </b></label>
+    <input type="text" placeholder="Enter Quantity" name="qty" ><br>
+    
+    <label style="color:steelblue"><b>DESCRIPTION&nbsp;&nbsp;  : </b></label>
+    <input type="text" placeholder="Enter Description" name="des" ><br>
+    
+    <label style="color:steelblue"><b>PICTURE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </b></label>
+    <input type="file" placeholder="Insert Image" name="pic" ><br><br>
+       
+    <button ><a href="productadd" style="text-decoration: none;color: skyblue" target="_top">ADD</a></button><br><br>
+  </div>
+
+</form>
+</center>
+
+    </body>
+</html>

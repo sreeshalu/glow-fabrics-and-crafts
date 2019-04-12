@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+   
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px transparent;
+      width: 500px;
+      align-content: center;
+}
+
+input[type=text], input[type=password]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc; 
+  box-sizing: border-box;
+  align-content: center;
+  
+  
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 4px 0;
+  border: none;
+  cursor: pointer;
+  width: 19%;
+  align-content: center;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 12px 0 6px 0;
+  
+}
+
+img.login {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 8px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 4px;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 200px) {
+  span.psw {
+     display: block;
+     float: none;
+     
+  }
+ 
+}
+</style>
+        
+    </head>
+    <body style="background-image:url('bg5.jpg'); height: auto">  
+       
+<center>
+    <br><br><br><br>
+    <form action="log" method="post">
+        <div align="right"><br><br><br><a href="index.html" style="text-decoration: none;color: skyblue" target="_top" >HOME</a></div>
+   <fieldset style="border-color:aquamarine">   
+       <legend style="color:steelblue"><h2>LOGIN PAGE</h2></legend>
+  <div class="imgcontainer">
+    <img src="login.png" alt="login" class="login">
+  </div>
+
+    <div class="container" align="center">
+        
+        <label for="uname" style="color:steelblue"><b>USER MAIL &nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;</b></label>
+    <input type="text" placeholder="Enter User Mail ID" name="uname" required><br>
+
+    <label for="psw" style="color:steelblue"><b>PASSWORD &nbsp;&nbsp; : &nbsp;&nbsp;</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required><br>
+        
+    <button type="submit">LOGIN</button><br><br>
+    Not Registered?<a href="signup.html">Create an account</a>
+    <br><br>
+        Forgot <a href="change.html">password?</a>
+    
+    
+  </div>
+   </fieldset>
+
+</form>
+</center>
+
+    </body>
+</html>

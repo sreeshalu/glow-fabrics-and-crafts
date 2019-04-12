@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+   <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function doSomething()
+	{
+		var opt = document.getElementById("option").value;
+		window.alert(opt);
+                if(opt == '02' )
+                {
+                        document.getElementById("vadhar").style.visibility = "visible";
+			document.getElementById("vadhar").style.display = "inline";
+                        
+                        document.getElementById("vadval").style.visibility = "visible";
+			document.getElementById("vadval").style.display = "inline";
+                        
+                        document.getElementById("pro").style.visibility = "visible";
+			document.getElementById("pro").style.display = "inline";
+                        
+                        document.getElementById("hndlm").style.visibility = "visible";
+			document.getElementById("hndlm").style.display = "inline";
+                        
+                        document.getElementById("hloom").style.visibility = "visible";
+			document.getElementById("hloom").style.display = "inline";
+                        
+                        document.getElementById("hndrft").style.visibility = "visible";
+			document.getElementById("hndrft").style.display = "inline";
+                        
+                        document.getElementById("hcraft").style.visibility = "visible";
+			document.getElementById("hcraft").style.display = "inline";
+                        
+                        document.getElementById("bt").style.visibility = "visible";
+			document.getElementById("bt").style.display = "inline";
+                        
+                        document.getElementById("bot").style.visibility = "visible";
+			document.getElementById("bot").style.display = "inline";
+                        
+                        document.getElementById("lno").style.visibility = "visible";
+			document.getElementById("lno").style.display = "inline";
+                        
+                        document.getElementById("ls").style.visibility = "visible";
+			document.getElementById("ls").style.display = "inline";
+               
+                        document.getElementById("eadhar").style.visibility = "hidden";
+			document.getElementById("eadhar").style.display = "none";
+
+			document.getElementById("eadval").style.visibility = "hidden";
+			document.getElementById("eadval").style.display = "none";
+
+			document.getElementById("exp").style.visibility = "hidden";
+			document.getElementById("exp").style.display = "none";
+
+			document.getElementById("wrkexp").style.visibility = "hidden";
+			document.getElementById("wrkexp").style.display = "none";
+
+			document.getElementById("emp").style.visibility = "hidden";
+			document.getElementById("emp").style.display = "none";
+                        
+                        document.getElementById("pte").style.visibility = "hidden";
+			document.getElementById("pte").style.display = "none";
+                        
+                        document.getElementById("part").style.visibility = "hidden";
+			document.getElementById("part").style.display = "none";
+                        
+                        document.getElementById("fte").style.visibility = "hidden";
+			document.getElementById("fte").style.display = "none";
+                        
+                        document.getElementById("full").style.visibility = "hidden";
+			document.getElementById("full").style.display = "none";
+                }
+                
+                else
+                {
+                        document.getElementById("vadhar").style.visibility = "hidden";
+			document.getElementById("vadhar").style.display = "none";
+                        
+                        document.getElementById("vadval").style.visibility = "hidden";
+			document.getElementById("vadval").style.display = "none";
+                        
+                        document.getElementById("pro").style.visibility = "hidden";
+			document.getElementById("pro").style.display = "none";
+                        
+                        document.getElementById("hndlm").style.visibility = "hidden";
+			document.getElementById("hndlm").style.display = "none";
+                        
+                        document.getElementById("hloom").style.visibility = "hidden";
+			document.getElementById("hloom").style.display = "none";
+                        
+                        document.getElementById("hndrft").style.visibility = "hidden";
+			document.getElementById("hndrft").style.display = "none";
+                        
+                        document.getElementById("hcraft").style.visibility = "hidden";
+			document.getElementById("hcraft").style.display = "none";
+                        
+                        document.getElementById("bt").style.visibility = "hidden";
+			document.getElementById("bt").style.display = "none";
+                        
+                        document.getElementById("bot").style.visibility = "hidden";
+			document.getElementById("bot").style.display = "none";
+                        
+                        document.getElementById("lno").style.visibility = "hidden";
+			document.getElementById("lno").style.display = "none";
+                        
+                        document.getElementById("ls").style.visibility = "hidden";
+			document.getElementById("ls").style.display = "none";
+                        
+                        document.getElementById("eadhar").style.visibility = "hidden";
+			document.getElementById("eadhar").style.display = "none";
+
+			document.getElementById("eadval").style.visibility = "hidden";
+			document.getElementById("eadval").style.display = "none";
+
+			document.getElementById("exp").style.visibility = "hidden";
+			document.getElementById("exp").style.display = "none";
+
+			document.getElementById("wrkexp").style.visibility = "hidden";
+			document.getElementById("wrkexp").style.display = "none";
+
+			document.getElementById("emp").style.visibility = "hidden";
+			document.getElementById("emp").style.display = "none";
+                        
+                        document.getElementById("pte").style.visibility = "hidden";
+			document.getElementById("pte").style.display = "none";
+                        
+                        document.getElementById("part").style.visibility = "hidden";
+			document.getElementById("part").style.display = "none";
+                        
+                        document.getElementById("fte").style.visibility = "hidden";
+			document.getElementById("fte").style.display = "none";
+                        
+                        document.getElementById("full").style.visibility = "hidden";
+			document.getElementById("full").style.display = "none";
+                }
+                
+               
+	}
+            function isNumberKey(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (!(charCode > 64 && (charCode < 91 || charCode > 96 && charCode < 123)))
+                {
+                    alert("Alphabets only..!!");
+                    return false;
+                }
+                     return true;
+            }
+            function isCapital(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (!(charCode > 64 && charCode < 91 ))
+                {
+                    alert("Capital alphabets only..!!");
+                    return false;
+                }
+                     return true;
+            }
+            function checkpass()
+            {
+                var empt2 = document.getElementById("p1").value;
+                var empt3 = document.getElementById("p2").value;
+                
+                if(empt2 != empt3)
+                {
+                    alert("Please check your password");
+                    return false;
+                }
+                else 
+                {
+                    return true;
+                }
+                
+            }
+           
+            function required()
+             {
+                var empt1 = document.forms["form1"]["email"].value;
+                var empt2 = document.forms["form1"]["pass"].value;
+                var empt3 = document.forms["form1"]["cpass"].value;
+                var empt4 = document.forms["form1"]["uname"].value;
+                var empt5 = document.forms["form1"]["add"].value;
+                var empt6 = document.forms["form1"]["pno"].value;
+                var empt7 = document.forms["form1"]["city"].value;
+                var empt8 = document.forms["form1"]["state"].value;
+                var empt9 = document.forms["form1"]["s1"].value;
+                if (empt1=="" || empt2=="" || empt3=="" || empt4.value=="" || empt5.value=="" || empt6=="" || empt7=="" || empt8=="" || empt9=="")
+                {
+                    alert("Please input all the values");
+                    return false;
+                }
+                else 
+                {
+                    return true;
+                }
+              }
+              function isNumberKey1(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                {
+                    alert("Numbers only..!!");
+                    return false;
+                }
+                     return true;
+            }
+            
+            
+            
+        </script>
+        <style>
+body {font-family: Arial, Helvetica, sans-serif;background-image: url('bgl.jpg');height: 100%;width: 100%}
+form {border: 3px solid transparent;
+      width: 700px;
+      align-content: center;
+      
+}
+input[type=email], input[type=password],input[type=password],input[type=text],input[type=text],input[type=number],input[type=text],input[type=text]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-content: center;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 19%;
+}
+button:hover {
+  opacity: 0.8;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 12px 0 6px 0;
+  
+}
+
+img.customer {
+  width: 25%;
+  border-radius: 50%;
+ 
+}
+
+
+</style>
+    </head>
+    <body ><center>
+        
+        <form action="adddetails" method="post" name="form1" onsubmit="return required()">
+             
+            <fieldset style="border-color: aquamarine">   
+                <legend style="color:skyblue"><h2>CREATE NEW ACCOUNT</h2></legend>
+             <div class ="imgcontainer">
+             <img src="user.png" class="customer">
+             </div>
+            EMAIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="email" placeholder="Enter E-Mail" name="email"><br>
+            PASSWORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="password" placeholder="Enter Password" name="pass" id="p1"><br>
+            CONFIRM PASSWORD&nbsp;:&nbsp;&nbsp;<input type="password" placeholder="Enter Confirm Password" name="cpass" id="p2" ><br>
+            USERNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter Your Name" name="uname" onkeypress="return isCapital(event)"><br>
+            ADDRESS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter Address" name="add"><br>
+            PHONE NUMBER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="number" placeholder="Enter Phone Number" name="pno" onkeypress="return isNumberKey1(event)"><br>
+            CITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter City" name="city" onkeypress="return isNumberKey(event)"><br>
+            STATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" placeholder="Enter State" name="state" onkeypress="return isNumberKey(event)"><br>
+            <br>
+            <div style="width:300px; float:left">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USERTYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<select id="option" name="s1" onchange="if (this.selectedIndex) doSomething();">
+                
+                <option value="00"></option>
+                <option value="c">CUSTOMER</option>
+                <option value="02">VENDOR</option>
+                <option value="03">EMPLOYEE</option>
+
+</select>
+               
+            </div>
+        <br><br>
+        <label id="vadhar" style="visibility: hidden; display: none;">AADHAR ID:</label>
+        <input type="text" style="visibility: hidden; display: none;" id="vadval" name="vaid" onkeypress="return isNumberKey1(event)"><br><br>
+        
+        <label id="pro" style="visibility: hidden; display: none;">PRODUCT TYPE:</label>
+           
+        <input type="radio" style="visibility: hidden; display: none;" value="handloom" name="ptype" id="hndlm" checked>
+        <label id="hloom" style="visibility: hidden; display: none;">HANDLOOM FABRICS</label>
+      
+        <input type="radio" style="visibility: hidden; display: none;" value="handicrafts" name="ptype" id="hndrft" checked>
+        <label id="hcraft" style="visibility: hidden; display: none;">HANDICRAFTS</label>
+        
+        <input type="radio" style="visibility: hidden; display: none;" value="both" name="ptype" id="bt" checked>
+        <label id="bot" style="visibility: hidden; display: none;">BOTH</label><br><br>
+        
+        <label id="lno" style="visibility: hidden; display: none;">LICENSE NO:</label>
+        <input type="text" style="visibility: hidden; display: none;" id="ls" name="lnum">
+        <br>
+        <center><button type="submit" onclick="return checkpass()">LOGIN</button></center>
+             </fieldset>
+        </form>
+    </center>
+    </body>
+</html>
