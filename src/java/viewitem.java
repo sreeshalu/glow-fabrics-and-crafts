@@ -77,9 +77,10 @@ public class viewitem extends HttpServlet {
                         
                     }
                  out.println("/<table>");
-                 out.println( "<form action='addcart'><br><center> "+
-"<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE ADDED TO CART : </label></h3><br><input type='text' name='cid'>"+
-"<button type='submit'>ADD</button><br></center></form>");
+                 out.println( "<form action='addtocart'><br><center> "+
+"<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE ADDED TO CART : </label></h3><br><input type='text' name='cid'>"
+                         + "<h3> <label style='color: skyblue'> ENTER THE QUANTITY OF PRODUCT TO BE ADDED TO CART : </label></h3><br><input type='text' name='qty'>" +
+"<button type=\"submit\">ADD</button><br></center></form>");
                  
             }
             catch(Exception e)
