@@ -50,15 +50,15 @@ public class shopproduct extends HttpServlet {
                 PreparedStatement ps1=con.prepareStatement("insert into shopproduct SELECT * FROM cart WHERE p_id = ? ");
                 ps1.setInt(1, id);
                 ps1.executeUpdate();
-
+                out.println("<html><head><script>window.alert('PURCHASED');</script></head></html>");
                 PreparedStatement ps2=con.prepareStatement("SELECT * FROM shopproduct  WHERE p_id = ? ");
                 ps2.setInt(1, id);
                 ResultSet rs = ps2.executeQuery();
                 while(rs.next())
                 {
-                    
+                    out.println(rs.getString(2));
                 }
-                out.println("<html><head><script>window.alert('PAYMENT');window.location.assign('payment.html');</script></head></html>");
+                //out.println("<html><head><script>window.alert('PAYMENT');window.location.assign('payment.html');</script></head></html>");
 
             }
             catch(Exception e)
