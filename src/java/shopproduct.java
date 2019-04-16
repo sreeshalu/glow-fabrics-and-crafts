@@ -58,7 +58,7 @@ public class shopproduct extends HttpServlet {
                 {
                     
                 }
-                out.println("<html><head><script>window.alert('ADDED TO CART');window.location.assign('payment.html');</script></head></html>");
+                out.println("<html><head><script>window.alert('PAYMENT');window.location.assign('payment.html');</script></head></html>");
 
             }
             catch(Exception e)
