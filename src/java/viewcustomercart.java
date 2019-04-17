@@ -75,7 +75,6 @@ public class viewcustomercart extends HttpServlet {
                        +"</tr>");
                         
                     }
-                 //String id = rs.getString(1);
                  
                  out.println("/<table>");
                  out.println("<form action='shopproduct'><br><center>  \n" +
