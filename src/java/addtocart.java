@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +41,9 @@ public class addtocart extends HttpServlet {
             String cumail = (String) application.getAttribute("cusmail");
             int id = Integer.parseInt(request.getParameter("cid"));
             int qty = Integer.parseInt(request.getParameter("qty"));
+            
+            ArrayList allValues = new ArrayList();
+            int val=0;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -54,13 +59,32 @@ public class addtocart extends HttpServlet {
                 ps1.setInt(1, id);
                 ps1.executeUpdate();
                 
+                PreparedStatement ps3=con.prepareStatement("SELECT * FROM original_product WHERE p_id = ? ");
+                ps3.setInt(1, id);
+                ResultSet rs = ps3.executeQuery();
+                while(rs.next())
+                {
+                    int totqty=rs.getInt(4);
+                    allValues.add(totqty);
+                }
+                for(int i=0; i < allValues.size();i++)
+                {
+                    val=(int)allValues.get(i);
+                }
+                out.println(val);
+                
                 PreparedStatement ps=con.prepareStatement("update cart set cmail=? , quantity=? where p_id=?");
                 ps.setString(1, cumail);
                 ps.setInt(2, qty);
                 ps.setInt(3, id);
                 ps.executeUpdate();
                 
-                
+                int curval=0;
+                curval=val-qty;
+                PreparedStatement ps4=con.prepareStatement("update original_product set quantity=? where p_id=?");
+                ps4.setInt(1, curval);
+                ps4.setInt(2,id);
+                ps4.executeUpdate();
                 out.println("<html><head><script>window.alert('ADDED TO CART');window.location.assign('viewitem');</script></head></html>");
 
             }
