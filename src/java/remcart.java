@@ -6,6 +6,11 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,13 +36,66 @@ public class remcart extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+             ArrayList allValues = new ArrayList();
+              ArrayList allValues1 = new ArrayList();
+             int val=0;
+             int val1=0;
+            int id=Integer.parseInt(request.getParameter("rid"));
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet remcart</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet remcart at " + request.getContextPath() + "</h1>");
+            try
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
+            
+                PreparedStatement ps1=con.prepareStatement("SELECT * FROM cart WHERE p_id = ? ");
+                ps1.setInt(1, id);
+                ResultSet rs = ps1.executeQuery();
+                 while(rs.next())
+                 {
+                   int totqty=rs.getInt(4);
+                    allValues.add(totqty);
+                 }
+                for(int i=0; i < allValues.size();i++)
+                {
+                    val=(int)allValues.get(i);
+                }
+                out.println(val);
+                PreparedStatement ps3=con.prepareStatement("SELECT * FROM original_product WHERE p_id = ? ");
+                ps3.setInt(1, id);
+                ResultSet rs1 = ps3.executeQuery();
+                 while(rs1.next())
+                 {
+                   int qty=rs1.getInt(4);
+                    allValues1.add(qty);
+                 }
+                for(int i=0; i < allValues1.size();i++)
+                {
+                    val1=(int)allValues1.get(i);
+                }
+                out.println(val1);
+
+                int curval=val+val1;
+                out.println(curval);
+                PreparedStatement ps4=con.prepareStatement("update original_product set quantity=? where p_id=?");
+                ps4.setInt(1, curval);
+                ps4.setInt(2,id);
+                ps4.executeUpdate();
+                
+                PreparedStatement ps5=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
+                ps5.setInt(1, id);
+                ps5.executeUpdate();
+                out.println("<html><head><script>window.alert('ITEM REMOVED FROM CART');</script></head></html>");
+                
+            }
+            catch(Exception e)
+            {
+                out.println(e);
+            }
             out.println("</body>");
             out.println("</html>");
         }
