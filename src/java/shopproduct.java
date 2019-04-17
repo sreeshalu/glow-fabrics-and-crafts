@@ -50,15 +50,30 @@ public class shopproduct extends HttpServlet {
                 PreparedStatement ps1=con.prepareStatement("insert into shopproduct SELECT * FROM cart WHERE p_id = ? ");
                 ps1.setInt(1, id);
                 ps1.executeUpdate();
+                 PreparedStatement ps3=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
+                ps3.setInt(1, id);
+                ps3.executeUpdate();
                 out.println("<html><head><script>window.alert('PURCHASED');</script></head></html>");
                 PreparedStatement ps2=con.prepareStatement("SELECT * FROM shopproduct  WHERE p_id = ? ");
                 ps2.setInt(1, id);
                 ResultSet rs = ps2.executeQuery();
+                out.println("<form action='payment' method='post'>");
                 while(rs.next())
                 {
-                    out.println(rs.getString(2));
+                    int pid = rs.getInt(1);
+                    String name = rs.getString(2);
+                    int price = rs.getInt(3);
+                    int qty = rs.getInt(4);
+                    
+                    
+                    out.println("<label>ID : </label><input type='text'value=\"" + pid +"\"name ='id' ><br<label>ITEM : </label><input type='text'value=\"" + name +"\"name ='name' ><br><label>PRICE : </label><input type='text'value=\"" + price +"\"name ='pr' ><br><label>QUANTITY: </label><input type='text'value=\"" + qty +"\"name ='qty' > ");
+
+                    int total = price * qty;
+                    out.println("<label>TOTAL AMOUNT : </label><input type='text'value=\"" + total +"\"name ='total'><br><br>");
                 }
-                //out.println("<html><head><script>window.alert('PAYMENT');window.location.assign('payment.html');</script></head></html>");
+                out.println("<input type='radio' name='pay' value='CASH ON DELIVERY'>CASH ON DELIVERY <input type='radio' name='pay' value='CREDIT CARD1'>CREDIT CARD ");
+                out.println("<button type=\"submit\">GO</button>");
+                out.println("</form>");
 
             }
             catch(Exception e)
