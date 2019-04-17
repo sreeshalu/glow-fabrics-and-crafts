@@ -11,6 +11,6 @@
 public class MyGlobals {
     public static int qtyno=0;
     public static String vendorname="";
-            
+    public static String vendormail="";        
     
 }
