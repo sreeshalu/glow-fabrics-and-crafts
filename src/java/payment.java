@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,19 +39,14 @@ public class payment extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             ServletContext application = getServletConfig().getServletContext();
             String cumail = (String) application.getAttribute("cusmail");
-            String vmail = (String) application.getAttribute("vendormail");
-            
+            String vmail = request.getParameter("mail");
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
             int price = Integer.parseInt(request.getParameter("pr"));
             int quant = Integer.parseInt(request.getParameter("qty"));
             int total = Integer.parseInt(request.getParameter("total"));
-            //out.println(total);
             
             double  point = 0.05*total;
-            //point=0.05*total;
-            
-            //out.println(point);
             double ad_amt = 0.35*total;
             double ve_amt = 0.65*total;
             
@@ -64,6 +60,15 @@ public class payment extends HttpServlet {
             {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
+                /*PreparedStatement ps2=con.prepareStatement("SELECT * FROM cart WHERE p_id = ? ");
+                ps2.setInt(1, id);
+                ResultSet rs = ps2.executeQuery();
+                while(rs.next())
+                {
+                   
+                    
+                }
+                //out.println(vmail);*/
                 
                 PreparedStatement ps=con.prepareStatement("insert into payment values(?,?,?,?,?,?,?,?,?,?)");
                 ps.setInt(1, id);
@@ -80,10 +85,17 @@ public class payment extends HttpServlet {
                 ps.setDouble(10, ve_amt);
                 
                 ps.executeUpdate();
+                
+                PreparedStatement ps1=con.prepareStatement("insert into totalpayment values(?,?)");
+                ps1.setString(1, cumail);
+                ps1.setInt(2,total);
+                ps1.executeUpdate();
+                
+                
             }
             catch(Exception e)
             {
-                
+                out.println(e);
             }
             out.println("</body>");
             out.println("</html>");
@@ -130,3 +142,4 @@ public class payment extends HttpServlet {
     }// </editor-fold>
 
 }
+ 
