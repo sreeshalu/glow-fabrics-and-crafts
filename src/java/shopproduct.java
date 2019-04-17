@@ -50,7 +50,7 @@ public class shopproduct extends HttpServlet {
                 PreparedStatement ps1=con.prepareStatement("insert into shopproduct SELECT * FROM cart WHERE p_id = ? ");
                 ps1.setInt(1, id);
                 ps1.executeUpdate();
-                 PreparedStatement ps3=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
+                PreparedStatement ps3=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
                 ps3.setInt(1, id);
                 ps3.executeUpdate();
                 out.println("<html><head><script>window.alert('PURCHASED');</script></head></html>");
@@ -60,13 +60,14 @@ public class shopproduct extends HttpServlet {
                 out.println("<form action='payment' method='post'>");
                 while(rs.next())
                 {
+                    String vmail = rs.getString(6);
                     int pid = rs.getInt(1);
                     String name = rs.getString(2);
                     int price = rs.getInt(3);
                     int qty = rs.getInt(4);
                     
                     
-                    out.println("<label>ID : </label><input type='text'value=\"" + pid +"\"name ='id' ><br<label>ITEM : </label><input type='text'value=\"" + name +"\"name ='name' ><br><label>PRICE : </label><input type='text'value=\"" + price +"\"name ='pr' ><br><label>QUANTITY: </label><input type='text'value=\"" + qty +"\"name ='qty' > ");
+                    out.println("<label>ID : </label><input type='text'value=\"" + pid +"\"name ='id' ><br<label>ITEM : </label><input type='text'value=\"" + name +"\"name ='name' ><br><label>PRICE : </label><input type='text'value=\"" + price +"\"name ='pr' ><br><label>QUANTITY: </label><input type='text'value=\"" + qty +"\"name ='qty' ><input type='text' name='mail' value=\""+ vmail +"\" style='visibility: hidden; display: none;'> ");
 
                     int total = price * qty;
                     out.println("<label>TOTAL AMOUNT : </label><input type='text'value=\"" + total +"\"name ='total'><br><br>");
