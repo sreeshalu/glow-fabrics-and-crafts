@@ -46,7 +46,7 @@ public class totalpayment extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet totalpayment</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body style=' background-image: url(pict8.jpg)'>");
             try
             {
                 Class.forName("com.mysql.jdbc.Driver");
