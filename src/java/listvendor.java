@@ -40,7 +40,7 @@ public class listvendor extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet listvendor</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body  style=' background-image: url(pict1.jpg)'>");
             try
             {
           
