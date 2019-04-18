@@ -43,7 +43,7 @@ public class vendorcash extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet vendorcash</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body style=' background-image: url(pict6.jpg)'>");
            try
             {
            
