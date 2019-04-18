@@ -40,7 +40,7 @@ public class filterproduct extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet filterproduct</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body  style=' background-image: url(pict1.jpg)'>");
             try
             {
            
