@@ -42,7 +42,7 @@ public class viewitem extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet viewitem</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body style=' background-image: url(pict8.jpg)'>");
             
             try
             {
