@@ -43,7 +43,7 @@ public class filtervendor extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet filtervendor</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body  style=' background-image: url(pict1.jpg)'>");
             try
             {
            
