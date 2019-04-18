@@ -43,7 +43,7 @@ public class viewcustomercart extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet viewcustomercart</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body style=' background-image: url(pict8.jpg)'>");
             try
             {
 
