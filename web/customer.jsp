@@ -37,6 +37,6 @@
         </div>
         </div>
         <br><br>
-        <iframe src="customer2.html" height="480" width="1350"></iframe>
+        <iframe src="customer2.html" height="600" width="1500" scrolling="yes"></iframe>
     </body>
 </html>
