@@ -40,7 +40,7 @@ public class viewcomnfeed extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet viewcomnfeed</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body style=' background-image: url(pict1.jpg)'>");
             try
             {
                 Class.forName("com.mysql.jdbc.Driver");
