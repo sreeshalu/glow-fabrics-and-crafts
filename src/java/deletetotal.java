@@ -52,6 +52,8 @@ public class deletetotal extends HttpServlet {
                  PreparedStatement ps5=con.prepareStatement("DELETE FROM totalpayment WHERE cmail = ?;");
                 ps5.setString(1, cumail);
                 ps5.executeUpdate();
+                
+                 out.println("<html><head><script>window.alert('PURCHASED SUCCESSFULLY DONE');window.location.assign('viewitem');</script></head></html>");
             }
            catch(Exception e)
            {
