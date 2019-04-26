@@ -27,7 +27,7 @@
                </div>
         <div style="width:300px;float: right">
            <br><br><br>
-           <a href="index.html" style="text-decoration: none;color: skyblue" target="_top" >HOME</a>&nbsp;&nbsp;
+           
             <a href="login.html" style="text-decoration: none;color: skyblue" target="_top" >LOGOUT</a>
         &nbsp;&nbsp;<a href="changepasscustomer.html" style="text-decoration: none;color: skyblue" target="_top">CHANGE PASSWORD</a><br><br>
         </div>

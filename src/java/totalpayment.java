@@ -40,7 +40,8 @@ public class totalpayment extends HttpServlet {
             ServletContext application = getServletConfig().getServletContext();
             String cumail = (String) application.getAttribute("cusmail");
             ArrayList allValues = new ArrayList();
-             double sum=0;
+            ArrayList allValues1 = new ArrayList();
+             double sum=0,point=0,newcash=0;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -67,18 +68,33 @@ public class totalpayment extends HttpServlet {
            
                 }
                 application.setAttribute("sum",sum);
-               out.println(sum);
+               out.println("<h2> TOTAL AMOUNT:"+sum+"</h2>");
+               
+               
+                  PreparedStatement ps3=con.prepareStatement("SELECT * FROM payment  WHERE custmail = ? ");
+                ps3.setString(1, cumail);
+                ResultSet rs1 = ps3.executeQuery();
                 
-              out.println(" <html>"+
-    "<head>"+
-       
-        <title>JSP Page</title>
-        out.println("<script>"+
+                 while(rs1.next())
+                {
+                    double pot=rs1.getDouble(6);
+                    allValues1.add(pot);
+                }
+                for(int i=0; i < allValues1.size();i++){
+                    double val1=(double) allValues1.get(i);
+                  point=point+val1;
+           
+                }
+                out.println("<h2> TOTAL POINT:"+point+"</h2>");
+                
+ 
+       // <title>JSP Page</title>
+        out.println("<script>" +
             "function ShowHideDiv() {"+
         "var chkYes = document.getElementById('chkYes');"+
         "var dvPassport = document.getElementById('dvPassport');"+
         "dvPassport.style.display = chkYes.checked ? 'block' : 'none';}"+
-    
+  
             "</script>"+
     "</head>"+
     "<body style=' background-image: url(pict8.jpg)'><center>"+
@@ -88,20 +104,22 @@ public class totalpayment extends HttpServlet {
        " <form action ='deletetotal'>"+
             // "<%= request.getAttribute("sum") %>."+
           " <label for='chkNo'>"+
-               "<input type="radio" id="chkNo" name="chkPassPort" onclick="ShowHideDiv()" />CASH ON DELIVERY</label>"+
-           "<label for="chkYes">"+
-               "<input type="radio" id="chkYes" name="chkPassPort" onclick="ShowHideDiv()" />CREDIT CARD</label>"+
+               "<input type='radio' id='chkNo' name='chkPassPort' onclick='ShowHideDiv()' />CASH ON DELIVERY</label>"+
+           "<label for='chkYes'>"+
+               "<input type='radio' id='chkYes' name='chkPassPort' onclick='ShowHideDiv()' />CREDIT CARD</label><br><br>"+
             
-            "<div id="dvPassport" style="display: none">"+
+            "<div id='dvPassport' style='display: none'>"+
             
-              "  <label id="c1" >CARD NUMBER</label>"+
-            "<input type="text"  name="cno" id="cno">"+
+              "  <label id='c1' >CARD NUMBER</label>"+
+            "<input type='text'  name='cno' id='cno'>"+
            " <br><br>"+
-          " <label id="c2">CVC NUMBER</label>"+
-            "<input type="text"  name="cno" id="cvc" >"+
+          " <label id='c2'>CVC NUMBER</label>"+
+            "<input type='text' name='cno' id='cvc' >"+
            " </div>"+
-           " <input type='submit' value='payment'>"+
-       " </form></center> </body></html>");
+           "<br><input type='submit' value='PAYMENT' ><br>"+
+       " </form>"+
+                "<form action ='redpoint'><input type='submit' value='PAYMENT BY POINTS'></form>"
+                + "</center> </body></html>");
     
    
 

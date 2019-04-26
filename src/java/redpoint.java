@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16076
  */
-public class shopproduct extends HttpServlet {
+public class redpoint extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,11 +37,15 @@ public class shopproduct extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int id = Integer.parseInt(request.getParameter("sid"));
+            ServletContext application = getServletConfig().getServletContext();
+            String cumail = (String) application.getAttribute("cusmail");
+            ArrayList allValues = new ArrayList();
+            ArrayList allValues1 = new ArrayList();
+             double sum=0,point=0,newcash=0;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet shopproduct</title>");            
+            out.println("<title>Servlet totalpayment</title>");            
             out.println("</head>");
             out.println("<body style=' background-image: url(pict8.jpg)'>");
             try
@@ -47,38 +53,65 @@ public class shopproduct extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
                 
-                PreparedStatement ps1=con.prepareStatement("insert into shopproduct SELECT * FROM cart WHERE p_id = ? ");
-                ps1.setInt(1, id);
-                ps1.executeUpdate();
-                PreparedStatement ps3=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
-                ps3.setInt(1, id);
-                ps3.executeUpdate();
-                out.println("<html><head><script>window.alert('PURCHASED');</script></head></html>");
-                PreparedStatement ps2=con.prepareStatement("SELECT * FROM shopproduct  WHERE p_id = ? ");
-                ps2.setInt(1, id);
+                PreparedStatement ps2=con.prepareStatement("SELECT * FROM totalpayment  WHERE cmail = ? ");
+                ps2.setString(1, cumail);
                 ResultSet rs = ps2.executeQuery();
-                out.println("<form action='payment' method='post'>");
+                
                 while(rs.next())
                 {
-                    String vmail = rs.getString(6);
-                    int pid = rs.getInt(1);
-                    String name = rs.getString(2);
-                    int price = rs.getInt(3);
-                    int qty = rs.getInt(4);
-                   
-                    
-                    out.println("<center><h1>PRODUCT DETIALS</h1><br><label>ID :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label><input type='text'value=\"" + pid  +"\"name ='id' ><br>"+
-                            "<label>ITEM : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type='text'value=\"" + name +"\"name ='name' ><br>"+
-                            "<label>PRICE :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type='text'value=\"" + price +"\"name ='pr' ><br>"+
-                            "<label>QUANTITY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label><input type='text'value=\"" + qty +"\"name ='qty'>"+
-                            "<input type='text' name='mail' value=\""+ vmail +"\" style='visibility: hidden; display: none;'><br> ");
-
-                    int total = price * qty;
-                    out.println("<label>TOTAL AMOUNT : </label><input type='text'value=\"" + total +"\"name ='total'><br><br>");
+                    double total=rs.getDouble(2);
+                    allValues.add(total);
                 }
-          out.println("<button type=\"submit\">GO</button>");
-                out.println("</center></form>");
-
+                for(int i=0; i < allValues.size();i++){
+                    double val=(double) allValues.get(i);
+                  sum=sum+val;
+           
+                }
+                
+               out.println(sum);
+               
+               
+                  PreparedStatement ps3=con.prepareStatement("SELECT * FROM payment  WHERE custmail = ? ");
+                ps3.setString(1, cumail);
+                ResultSet rs1 = ps3.executeQuery();
+                
+                 while(rs1.next())
+                {
+                    double pot=rs1.getDouble(6);
+                    allValues1.add(pot);
+                }
+                for(int i=0; i < allValues1.size();i++){
+                    double val1=(double) allValues1.get(i);
+                  point=point+val1;
+           
+                }
+                out.println(point);
+                
+                if(sum>point)
+                {
+                    newcash=0;
+                    newcash=sum-point;
+                    out.println(newcash);
+                    
+                PreparedStatement ps=con.prepareStatement("update  payment set point=0 ,total=? WHERE custmail = ? ");
+                ps.setString(2, cumail);
+                ps.setDouble(1, newcash);
+                  ps.executeUpdate();  
+                }
+                else
+                {
+                    newcash=0;
+                    newcash=point-sum;
+                    point=point-newcash;
+                    
+                   PreparedStatement ps1=con.prepareStatement("update  payment set point=?,total=?  WHERE custmail = ? ");
+                   ps1.setDouble(1,point);
+                   ps1.setDouble(2, newcash);
+                ps1.setString(3, cumail);
+                  ps1.executeUpdate();  
+                    
+                }
+                    
             }
             catch(Exception e)
             {

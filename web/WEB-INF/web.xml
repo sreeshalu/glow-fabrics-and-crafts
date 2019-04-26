@@ -164,6 +164,10 @@
         <servlet-name>totalpayment</servlet-name>
         <servlet-class>totalpayment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>redpoint</servlet-name>
+        <servlet-class>redpoint</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>adddetails</servlet-name>
         <url-pattern>/adddetails</url-pattern>
@@ -327,6 +331,10 @@
     <servlet-mapping>
         <servlet-name>totalpayment</servlet-name>
         <url-pattern>/totalpayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>redpoint</servlet-name>
+        <url-pattern>/redpoint</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -66,7 +66,7 @@ public class point extends HttpServlet {
                   sum=sum+val;
            
                 }
-                 out.println("TOTAL POINT:"+sum);
+                 out.println("<center><h2>TOTAL POINT:"+sum+"</h2></center>");
             }
             catch(Exception e)
             {

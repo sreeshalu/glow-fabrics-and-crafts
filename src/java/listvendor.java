@@ -51,7 +51,7 @@ public class listvendor extends HttpServlet {
                
                 ResultSet rs = ps1.executeQuery();
                     
-                out.println("<table id=\"myTable\" border=1 width=50% height=50% align=center>"
+                out.println("<table border=1 width=50% height=50% align=center>"
                         +"<tr>"
                             + "<th>E-Mail </th>"
                             + "<th>Username</th>"
@@ -79,21 +79,10 @@ public class listvendor extends HttpServlet {
                         +"<td>"+rs.getString(11)+"</td>"
                         +"</tr>");
                         
-                        /*String mail = rs.getString(1);
-                        request.setAttribute("mail",mail);
-                        
-                        RequestDispatcher rd=request.getRequestDispatcher("vendoradd");
-                        rd.forward(request, response);*/
                     }
                  out.println("/<table>");
                  out.println();
-                /* out.println("<input type='text' name='name' id='t1'> <button onsubmit='vendor.html' style=\"text-decoration: none;color:skyblue\">ADD</button>");
-                 out.println("<script>\n" +
-                "function adding() {\n" +
-                "  var row = document.getElementById('t1'); window.alert(row.value);" +  "}" +
-                "</script>");     
-                 
-                 out.println("<button><a href='vendor.html'>ADD</a></button>");*/
+               
             
             }
             catch(Exception e)

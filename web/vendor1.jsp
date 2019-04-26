@@ -30,7 +30,7 @@
         &nbsp;&nbsp;<a href="changepassvendor.html" style="text-decoration: none;color: skyblue" target="_top">CHANGE PASSWORD</a><br><br>
         </div>
         <div class="center">
-         <br>
+         
       WELCOME ${vendorname}
            
         </div>

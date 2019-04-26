@@ -37,6 +37,16 @@
            <label id="c2">CVC NUMBER</label>
             <input type="text"  name="cno" id="cvc" >
             </div>
+           <label>POINTS???</label>
+           <label for="yes"> <input type="radio" id="yes" name="point" onclick="pointuse()"/>yes</label>
+               <label for="no"> <input type="radio" id="no" name="point" />no</label>
+           
+               <script>
+                   function pointuse()
+                   {
+                       
+                   }
+                   </script>
             <input type='submit' value='payment'>
         </form>
     </center>
