@@ -39,7 +39,7 @@ public class totalpayment extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             ServletContext application = getServletConfig().getServletContext();
             String cumail = (String) application.getAttribute("cusmail");
-             ArrayList allValues = new ArrayList();
+            ArrayList allValues = new ArrayList();
              double sum=0;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -66,9 +66,21 @@ public class totalpayment extends HttpServlet {
                   sum=sum+val;
            
                 }
+                application.setAttribute("sum",sum);
                 out.println(sum);
                 
-                out.println("<form action ='deletetotal'><input type='submit' value='payment'></form>");
+
+               /* out.println("MODE OF PAYMENT");
+                out.println("<script>"
+                        +
+                        
+                         "</script>");
+                out.println("<form>"
+                        + "<input type='radio' name='pay' value='CASH ON DELIVERY'>CASH ON DELIVERY </input>"
+                        +"<input type='radio' name='pay' value='CREDIT CARD'>CREDIT CARD</input>"
+                        +"</form>");
+                
+                out.println("<form action ='deletetotal'><input type='submit' value='payment'></form>");*/
             }
             catch(Exception e)
             {
