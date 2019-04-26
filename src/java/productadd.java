@@ -57,7 +57,7 @@ public class productadd extends HttpServlet {
                 String vemail = (String) application.getAttribute("vendormail");
                 //this.stmt.executeUpdate("CREATE TABLE testBug3873 (keyField INT NOT NULL PRIMARY KEY AUTO_INCREMENT, dataField VARCHAR(32))");
 
-                 ps1=con.prepareStatement("INSERT INTO product_list values(?,?,?,?,?,?,?) ",PreparedStatement.RETURN_GENERATED_KEYS);
+                 ps1=con.prepareStatement("INSERT INTO product_list values(?,?,?,?,?,?,?,?) ",PreparedStatement.RETURN_GENERATED_KEYS);
                 
                 
                 ps1.setInt(1, id);
@@ -67,6 +67,7 @@ public class productadd extends HttpServlet {
                 ps1.setString(5, des);
                 ps1.setString(6, vemail);
                 ps1.setString(7, des);
+                ps1.setString(8, name);
                 id++;
                 int row = ps1.executeUpdate();
             if (row > 0) {
