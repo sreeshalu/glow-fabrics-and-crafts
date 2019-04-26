@@ -136,6 +136,34 @@
         <servlet-name>orig_product</servlet-name>
         <servlet-class>orig_product</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addtocart</servlet-name>
+        <servlet-class>addtocart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>itemadd</servlet-name>
+        <servlet-class>itemadd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cash</servlet-name>
+        <servlet-class>cash</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vendormail</servlet-name>
+        <servlet-class>vendormail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vendorcash</servlet-name>
+        <servlet-class>vendorcash</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>point</servlet-name>
+        <servlet-class>point</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>totalpayment</servlet-name>
+        <servlet-class>totalpayment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>adddetails</servlet-name>
         <url-pattern>/adddetails</url-pattern>
@@ -271,6 +299,34 @@
     <servlet-mapping>
         <servlet-name>orig_product</servlet-name>
         <url-pattern>/orig_product</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addtocart</servlet-name>
+        <url-pattern>/addtocart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>itemadd</servlet-name>
+        <url-pattern>/itemadd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cash</servlet-name>
+        <url-pattern>/cash</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vendormail</servlet-name>
+        <url-pattern>/vendormail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vendorcash</servlet-name>
+        <url-pattern>/vendorcash</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>point</servlet-name>
+        <url-pattern>/point</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>totalpayment</servlet-name>
+        <url-pattern>/totalpayment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

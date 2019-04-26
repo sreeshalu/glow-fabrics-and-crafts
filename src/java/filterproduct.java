@@ -84,7 +84,8 @@ public class filterproduct extends HttpServlet {
 "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE REMOVED : </label></h3><input type='text' name='rid'>\n" +
 "      <button type=\"submit\">REMOVE</button></center></form>");
                  out.println("<form action='itemadd' method='post'><center>"+
-                         "<h3> <label style='color: skyblue'> ENTER THE E-MAIL OF VENDOR TO BE ADDED : </label></h3><input type=\"text\" name=\"aid\">\n" +
+                         "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE ADDED : </label></h3><input type=\"text\" name=\"aid\">\n" +
+                         "<h3> <label style='color: skyblue'> ENTER THE PATH OF IMAGE TO BE ADDED : </label></h3><input type=\"file\" name=\"img\">\n" +
 "<button type=\"submit\">ADD</button><br><br>\n</form>" );
             }
             catch(Exception e)

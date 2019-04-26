@@ -54,6 +54,7 @@ public class listproduct extends HttpServlet {
                     
                 out.println("<table id=\"myTable\" border=1 width=50% height=50% align=center>"
                         +"<tr>"
+                        +"<th>IMAGE </th>"
                             + "<th>PRODUCT ID</th>"
                             + "<th>PRODUCT NAME</th>"
                             + "<th>PRICE</th>"
@@ -65,6 +66,7 @@ public class listproduct extends HttpServlet {
                  {
                         
                         out.println("<tr align=center>"
+                        +"<td><img src=\"" + rs.getString(8) + "\" alt='Girl in a jacket' width=\"100\" height=\"100\"> </td>"
                         +"<td>"+rs.getString(1)+"</td>"
                         +"<td>"+rs.getString(2)+"</td>"
                         +"<td>"+rs.getString(3)+"</td>"

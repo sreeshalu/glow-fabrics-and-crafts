@@ -37,6 +37,7 @@ public class viewitem extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             ServletContext application = getServletConfig().getServletContext();
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -57,6 +58,7 @@ public class viewitem extends HttpServlet {
                     
                 out.println("<table id=\"myTable\" border=1 width=50% height=50% align=center>"
                         +"<tr>"
+                            +"<th>IMAGE </th>"
                             + "<th>PRODUCT ID</th>"
                             + "<th>PRODUCT NAME</th>"
                             + "<th>PRICE</th>"
@@ -68,14 +70,17 @@ public class viewitem extends HttpServlet {
                  {
                         
                         out.println("<tr align=center>"
+                        +"<td><img src=\"" + rs.getString(8) + "\" alt='Girl in a jacket' width=\"100\" height=\"100\"> </td>"
                         +"<td>"+rs.getString(1)+"</td>"
                         +"<td>"+rs.getString(2)+"</td>"
                         +"<td>"+rs.getString(3)+"</td>"
                         +"<td>"+rs.getString(4)+"</td>"
                         +"<td>"+rs.getString(5)+"</td>"
-                       +"</tr>");
+                        +"</tr>");
+                        
                         
                     }
+                 
                  out.println("/<table>");
                  out.println( "<form action='addtocart'><br><center> "+
 "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE ADDED TO CART : </label></h3><br><input type='text' name='cid'>"

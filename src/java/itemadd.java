@@ -35,6 +35,8 @@ public class itemadd extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String id = request.getParameter("aid");
+            String img=request.getParameter("img");
+            out.println(img);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -43,7 +45,7 @@ public class itemadd extends HttpServlet {
             out.println("<body>");
             try
             {
-                out.println("added");
+                
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
                 
@@ -52,6 +54,11 @@ public class itemadd extends HttpServlet {
                 
                 ps1.executeUpdate();
    
+                PreparedStatement ps=con.prepareStatement("update original_product  set image=? where p_id=?");
+                ps.setString(1, img);
+                ps.setString(2, id);
+                ps.executeUpdate();
+                
                 PreparedStatement ps2=con.prepareStatement("DELETE FROM product_list WHERE p_id = ?;");
                 ps2.setString(1, id);
                 

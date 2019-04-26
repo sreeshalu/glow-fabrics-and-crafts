@@ -53,6 +53,8 @@ public class org_product extends HttpServlet {
                 
                 ps1.executeUpdate();
    
+                
+                
                 PreparedStatement ps2=con.prepareStatement("DELETE FROM product_list WHERE p_id = ?;");
                 ps2.setString(1, id);
                 
