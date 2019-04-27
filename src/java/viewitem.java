@@ -56,7 +56,7 @@ public class viewitem extends HttpServlet {
                
                 ResultSet rs = ps1.executeQuery();
                     
-                out.println("<table id=\"myTable\" border=1 width=50% height=50% align=center>"
+               out.println("<table id=\"myTable\"style=\"border: 1px solid black;border-collapse: collapse;\" width=100% height=100% align=center>"
                         +"<tr>"
                             +"<th>IMAGE </th>"
                             + "<th>PRODUCT ID</th>"
@@ -69,8 +69,14 @@ public class viewitem extends HttpServlet {
                  while(rs.next())
                  {
                         
-                        out.println("<tr align=center>"
-                        +"<td><img src=\"" + rs.getString(8) + "\" alt='Girl in a jacket' width=\"100\" height=\"100\"> </td>"
+                     /*out.println("<img src=\""+rs.getString(8)+ "\" height=\"100\" width=\"100\"><br>"+
+                             "<input  value=\""+rs.getString(1)+"\"  style=\"background-color: transparent; border-color: transparent\"><br>"+
+                             "<input  value=\""+rs.getString(2)+"\"  style=\"background-color: transparent; border-color: transparent\"><br>"+
+                             "<input  value=\""+rs.getString(3)+"\"  style=\"background-color: transparent; border-color: transparent\"><br>"+ 
+                             "<input  value=\""+rs.getString(4)+"\"  style=\"background-color: transparent; border-color: transparent\"><br>"+         
+                             "<input  value=\""+rs.getString(5)+"\"  style=\"background-color: transparent; border-color: transparent\">");*/
+                       out.println("<tr align=center>"
+                        +"<td><img src=\"" + rs.getString(8) + "\" alt='Girl in a jacket' width=\"150\" height=\"150\"> </td>"
                         +"<td>"+rs.getString(1)+"</td>"
                         +"<td>"+rs.getString(2)+"</td>"
                         +"<td>"+rs.getString(3)+"</td>"
@@ -78,7 +84,7 @@ public class viewitem extends HttpServlet {
                         +"<td>"+rs.getString(5)+"</td>"
                         +"</tr>");
                         
-                        
+                       
                     }
                  
                  out.println("/<table>");

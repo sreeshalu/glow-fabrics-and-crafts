@@ -58,7 +58,7 @@ public class vcfadd extends HttpServlet {
                      String email=rs.getString(1);
                      if(vemail.equals(email))
                      {
-                         out.println(vemail);
+                         
                          type="vendor";
                             
                  

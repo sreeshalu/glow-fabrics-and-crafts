@@ -44,7 +44,7 @@ public class adddetails extends HttpServlet {
             String city=request.getParameter("city");
             String state=request.getParameter("state");
             String utype=request.getParameter("s1");
-            out.println(utype);out.println("c");
+       
            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -52,12 +52,12 @@ public class adddetails extends HttpServlet {
             out.println("<title>Servlet adddetails</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("customer");
+           
             try
             {
                 
-                out.println("c");  
-                 out.println(utype);
+               
+               
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/shoppingcart", "root", "");
                 try
@@ -65,7 +65,7 @@ public class adddetails extends HttpServlet {
                  
                 if("c".equals(utype))
                 {
-                    out.println("amma");
+                    
                     PreparedStatement ps1=con.prepareStatement("insert into customer values(?,?,?,?,?,?,?,?)");
                      ps1.setString(1,mail);
                      ps1.setString(2,pass);
@@ -89,9 +89,9 @@ public class adddetails extends HttpServlet {
                 {
                      String protype = request.getParameter("ptype");
                      String lno = request.getParameter("lnum");
-                     int vadhar=Integer.parseInt(request.getParameter("vaid"));
+                     String vadhar=request.getParameter("vaid");
             
-                if("02".equals(utype))
+                if("v".equals(utype))
                     {
                         
                         PreparedStatement ps2=con.prepareStatement("insert into vendor values(?,?,?,?,?,?,?,?,?,?,?) ");
@@ -105,7 +105,7 @@ public class adddetails extends HttpServlet {
                         ps2.setString(8,state);
                         ps2.setString(9,protype);
                         ps2.setString(10,lno);
-                        ps2.setInt(11,vadhar);
+                        ps2.setString(11,vadhar);
                         
                         ps2.executeUpdate();
                     

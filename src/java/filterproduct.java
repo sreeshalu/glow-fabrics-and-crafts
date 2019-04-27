@@ -76,21 +76,11 @@ public class filterproduct extends HttpServlet {
                         
                     }
                  out.println("/<table>");
-                  out.println("<script>  function isNumberKey1(evt){" +
-                       "var empt1 = document.forms['form1']['rid'].value;"+
-             " var charCode = (evt.which) ? evt.which : event.keyCode{" +
-                       " if (charCode > 31 && (charCode < 48 || charCode > 57) &&(empt1=='') ){" +
-             
-                   "alert(\"Numbers only and Cannot be null \");" +
-                   "return false;" +
-               "}" +
-                   " return true;" +
-                       
-            "}</script>");
+                 
                out.println("<form></form>");
-                 out.println("<form action='itemrem' name='form1' method='post'><br><center>" +
+                 out.println("<form action='itemrem'><br><center>" +
 "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE REMOVED : </label></h3><input type='text' name='rid'>\n" +
-"      <button type=\"submit\" onclick=\"isNumberKey1(event)\">REMOVE</button></center></form>");
+"      <button type=\"submit\">REMOVE</button></center></form>");
                  out.println("<form action='itemadd' method='post'><center>"+
                          "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO BE ADDED : </label></h3><input type=\"text\" name=\"aid\">\n" +
                          "<h3> <label style='color: skyblue'> ENTER THE PATH OF IMAGE TO BE ADDED : </label></h3><input type=\"file\" name=\"img\">\n" +

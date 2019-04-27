@@ -68,7 +68,7 @@ public class redpoint extends HttpServlet {
            
                 }
                 
-               out.println(sum);
+               out.println("<h2>TOTAL AMOUNT:"+sum+"</h2>");
                
                
                   PreparedStatement ps3=con.prepareStatement("SELECT * FROM payment  WHERE custmail = ? ");
@@ -85,13 +85,13 @@ public class redpoint extends HttpServlet {
                   point=point+val1;
            
                 }
-                out.println(point);
+                out.println("<h2>TOTAL POINT:"+point+"</h2>");
                 
                 if(sum>point)
                 {
                     newcash=0;
                     newcash=sum-point;
-                    out.println(newcash);
+                    out.println("<h2>CURRENT AMOUNT:"+newcash+"</h2>");
                     
                 PreparedStatement ps=con.prepareStatement("update  payment set point=0 ,total=? WHERE custmail = ? ");
                 ps.setString(2, cumail);
@@ -103,7 +103,7 @@ public class redpoint extends HttpServlet {
                     newcash=0;
                     newcash=point-sum;
                     point=point-newcash;
-                    
+                    out.println("<h2>CURRENT AMOUNT:"+newcash+"</h2>");
                    PreparedStatement ps1=con.prepareStatement("update  payment set point=?,total=?  WHERE custmail = ? ");
                    ps1.setDouble(1,point);
                    ps1.setDouble(2, newcash);

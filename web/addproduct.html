@@ -59,6 +59,21 @@ button:hover {
  
 
 </style>
+<script>
+    
+     function isNumberKey1(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                {
+                    alert("Numbers only..!!");
+                    return false;
+                }
+                     return true;
+            }
+    
+    </script>
+
         
     </head>
     <body style='background-image:url(pict6.jpg);background-size: cover;background-repeat: no-repeat;background-position: top;'> 
@@ -75,10 +90,10 @@ button:hover {
     <input type="text" placeholder="Enter Product Name" name="name" ><br>
     
     <label style="color:steelblue"><b>PRICE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </b></label>
-    <input type="text" placeholder="Enter Price" name="price" ><br>
+    <input type="text" placeholder="Enter Price" name="price" onkeypress="return isNumberKey1(event)" ><br>
     
     <label style="color:steelblue"><b>QUANTITY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </b></label>
-    <input type="text" placeholder="Enter Quantity" name="qty" ><br>
+    <input type="text" placeholder="Enter Quantity" name="qty" onkeypress="return isNumberKey1(event)"><br>
     
     <label style="color:steelblue"><b>DESCRIPTION&nbsp;&nbsp;  : </b></label>
     <input type="text" placeholder="Enter Description" name="des" ><br>

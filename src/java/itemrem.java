@@ -63,8 +63,7 @@ public class itemrem extends HttpServlet {
                 for(int i=0; i < allValues.size();i++){
                     val=(String) allValues.get(i);
                   
-                  if(val==id)
-                  {
+                 
            
                 
                 
@@ -78,7 +77,7 @@ public class itemrem extends HttpServlet {
                 
                     ps2.executeUpdate();
                     out.println("<html><head><script>window.alert('RECORD REMOVED');window.location.assign('filterproduct');</script></head></html>");
-                  }
+                  
                   
                 }
                 for (int i = 0; i < id.length(); i++) {

@@ -50,6 +50,20 @@ public class shopproduct extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
                 
+                for (int j = 0; j < id.length(); j++) {
+                char charAt2 = id.charAt(j);
+                if (Character.isLetter(charAt2)) {
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewcustomercart');</script></head></html>");
+                    
+                }
+                }
+               
+                  
+                            if( id.equals(""))
+                    {
+                        out.println("<html><head><script>window.alert('CANNOT BE NULL');window.location.assign('viewcustomercart');</script></head></html>");
+                    }
+                
                 PreparedStatement ps=con.prepareStatement("SELECT  * FROM cart");
                
                 ResultSet rs1 = ps.executeQuery();
@@ -63,8 +77,8 @@ public class shopproduct extends HttpServlet {
                 for(int i=0; i < allValues.size();i++){
                     val=(String) allValues.get(i);
                   
-                  if(val==id)
-                  {
+                 // if(val==id)
+                //  {
            
                 
                 PreparedStatement ps1=con.prepareStatement("insert into shopproduct SELECT * FROM cart WHERE p_id = ? ");
@@ -75,20 +89,8 @@ public class shopproduct extends HttpServlet {
                 ps3.executeUpdate();
                 out.println("<html><head><script>window.alert('PURCHASED');</script></head></html>");
                   }
-                }
-                 for (int j = 0; j < id.length(); j++) {
-                char charAt2 = id.charAt(j);
-                if (Character.isLetter(charAt2)) {
-                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewcustomercart');</script></head></html>");
-                    
-                }
-                }
-               
-                  
-                            if( id.equals(""))
-                    {
-                        out.println("<html><head><script>window.alert('CANNOT BE NULL');window.location.assign('viewcustomercart');</script></head></html>");
-                    }
+                
+                 
                     
               
                  

@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -42,6 +43,7 @@ public class addtocart extends HttpServlet {
             String id =request.getParameter("cid");
            int qty = Integer.parseInt(request.getParameter("qty"));
             int qty1 = Integer.parseInt(request.getParameter("qty"));
+            String qt = request.getParameter("qty");
             ArrayList allValues = new ArrayList();
             int val=0;
             
@@ -66,9 +68,31 @@ public class addtocart extends HttpServlet {
                  for (int j= 0; j < id.length(); j++) {
                 char charAt2 = id.charAt(j);
                 if (Character.isLetter(charAt2)) {
-                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewcustomercart');</script></head></html>");
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewitem');</script></head></html>");
                 }
                  }
+                 for (int j= 0; j < qt.length(); j++) {
+                char charAt2 = qt.charAt(j);
+                if (Character.isLetter(charAt2)) {
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewitem');</script></head></html>");
+                }
+                 }
+                 
+                 /*for (int j= 0; j < id.length(); j++) {
+                     char charAt2 = id.charAt(j); 
+                     for (int k= 0; k < qt.length(); k++) {
+                          
+                           char charAt1 = qt.charAt(k);
+                           if((Character.isLetter(charAt2))&&(Character.isLetter(charAt1)))
+                           {
+                               out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewitem');</script></head></html>");
+                }
+                         
+                     }
+                 }*/
+                     
+                 
+                 
                 PreparedStatement ps5=con.prepareStatement("SELECT  * FROM original_product");
                
                 ResultSet rs1 = ps5.executeQuery();
@@ -87,12 +111,9 @@ public class addtocart extends HttpServlet {
 
                      }
                     out.println(val2);
+                    out.println(qty1);
                  
-                if(val2<=qty1)
-              {
-                
-              
-                    
+            
                 PreparedStatement ps1=con.prepareStatement("insert into cart SELECT * FROM original_product WHERE p_id = ? ");
                 ps1.setString(1, id);
                 ps1.executeUpdate();
@@ -123,20 +144,21 @@ public class addtocart extends HttpServlet {
                 ps4.setInt(1, curval);
                 ps4.setString(2,id);
                 ps4.executeUpdate();
-                out.println("<html><head><script>window.alert('ADDED TO CART');window.location.assign('viewitem');</script></head></html>");
-
-                }
-                else
-                {
-                    out.println("<html><head><script>window.alert('QUANTITY IS MORE');window.location.assign('viewitem');</script></head></html>");
                 
+                if(curval<0)
+                {
+                    PreparedStatement ps6=con.prepareStatement("update original_product set quantity=? where p_id=?");
+                ps6.setInt(1,0);
+                ps6.setString(2,id);
+                ps6.executeUpdate();
                 }
-                 
-                 
-                 
-           }
-    
+                out.println("<html><head><script>window.alert('ADDED TO CART');window.location.assign('viewitem');</script></head></html>");
+              
             
+            }
+                 
+          
+    
             
             catch(Exception e)
             {
@@ -146,7 +168,7 @@ public class addtocart extends HttpServlet {
             out.println("</html>");
         
     }
-    }
+}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
