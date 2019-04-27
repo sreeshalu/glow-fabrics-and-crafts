@@ -168,6 +168,10 @@
         <servlet-name>redpoint</servlet-name>
         <servlet-class>redpoint</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>itemrem</servlet-name>
+        <servlet-class>itemrem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>adddetails</servlet-name>
         <url-pattern>/adddetails</url-pattern>
@@ -335,6 +339,10 @@
     <servlet-mapping>
         <servlet-name>redpoint</servlet-name>
         <url-pattern>/redpoint</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>itemrem</servlet-name>
+        <url-pattern>/itemrem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -91,7 +91,7 @@ public class payment extends HttpServlet {
                 ps1.setInt(2,total);
                 ps1.executeUpdate();
                 
-                
+                 out.println("<html><head><script>window.alert('PURCHASED');</script></head></html>");
             }
             catch(Exception e)
             {

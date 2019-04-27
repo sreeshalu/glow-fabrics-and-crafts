@@ -39,11 +39,16 @@ public class addtocart extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
              ServletContext application = getServletConfig().getServletContext();
             String cumail = (String) application.getAttribute("cusmail");
-            int id = Integer.parseInt(request.getParameter("cid"));
-            int qty = Integer.parseInt(request.getParameter("qty"));
-            
+            String id =request.getParameter("cid");
+           int qty = Integer.parseInt(request.getParameter("qty"));
+            int qty1 = Integer.parseInt(request.getParameter("qty"));
             ArrayList allValues = new ArrayList();
             int val=0;
+            
+         
+             ArrayList allValues2 = new ArrayList();
+          
+             int val2=0;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -52,49 +57,95 @@ public class addtocart extends HttpServlet {
             out.println("<body>");
             try
             {
+                
+                
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
                 
+                
+                 for (int j= 0; j < id.length(); j++) {
+                char charAt2 = id.charAt(j);
+                if (Character.isLetter(charAt2)) {
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewcustomercart');</script></head></html>");
+                }
+                 }
+                PreparedStatement ps5=con.prepareStatement("SELECT  * FROM original_product");
+               
+                ResultSet rs1 = ps5.executeQuery();
+                while(rs1.next())
+                {
+
+                    int pqty = rs1.getInt(4);
+                    
+                    allValues2.add(pqty);
+                }
+                
+              
+                     for(int k=0; k < allValues2.size();k++){
+                   
+                    val2=(Integer) allValues2.get(k);
+
+                     }
+                    out.println(val2);
+                 
+                if(val2<=qty1)
+              {
+                
+              
+                    
                 PreparedStatement ps1=con.prepareStatement("insert into cart SELECT * FROM original_product WHERE p_id = ? ");
-                ps1.setInt(1, id);
+                ps1.setString(1, id);
                 ps1.executeUpdate();
                 
                 PreparedStatement ps3=con.prepareStatement("SELECT * FROM original_product WHERE p_id = ? ");
-                ps3.setInt(1, id);
+                ps3.setString(1, id);
                 ResultSet rs = ps3.executeQuery();
                 while(rs.next())
                 {
                     int totqty=rs.getInt(4);
                     allValues.add(totqty);
                 }
-                for(int i=0; i < allValues.size();i++)
+                for(int c=0; c < allValues.size();c++)
                 {
-                    val=(int)allValues.get(i);
+                    val=(int)allValues.get(c);
                 }
-                out.println(val);
+                
                 
                 PreparedStatement ps=con.prepareStatement("update cart set cmail=? , quantity=? where p_id=?");
                 ps.setString(1, cumail);
                 ps.setInt(2, qty);
-                ps.setInt(3, id);
+                ps.setString(3, id);
                 ps.executeUpdate();
                 
                 int curval=0;
                 curval=val-qty;
                 PreparedStatement ps4=con.prepareStatement("update original_product set quantity=? where p_id=?");
                 ps4.setInt(1, curval);
-                ps4.setInt(2,id);
+                ps4.setString(2,id);
                 ps4.executeUpdate();
                 out.println("<html><head><script>window.alert('ADDED TO CART');window.location.assign('viewitem');</script></head></html>");
 
-            }
+                }
+                else
+                {
+                    out.println("<html><head><script>window.alert('QUANTITY IS MORE');window.location.assign('viewitem');</script></head></html>");
+                
+                }
+                 
+                 
+                 
+           }
+    
+            
+            
             catch(Exception e)
             {
                 out.println(e);
             }
             out.println("</body>");
             out.println("</html>");
-        }
+        
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

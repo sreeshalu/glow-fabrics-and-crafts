@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.servlet.ServletContext;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16076
  */
-public class viewcustomercart extends HttpServlet {
+public class itemrem extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,55 +36,66 @@ public class viewcustomercart extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ServletContext application = getServletConfig().getServletContext();
-            String cumail = (String) application.getAttribute("cusmail");             
+           String id = request.getParameter("rid");
+             ArrayList allValues = new ArrayList();
+             String val=" ";
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet viewcustomercart</title>");            
+            out.println("<title>Servlet itemrem</title>");            
             out.println("</head>");
-            out.println("<body style=' background-image: url(pict8.jpg)'>");
-            try
+            out.println("<body>");
+             try
             {
-
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
                 
-                PreparedStatement ps1=con.prepareStatement("SELECT  * FROM cart where cmail = ?;");
-                ps1.setString(1,cumail );
-                ResultSet rs = ps1.executeQuery();
+                  PreparedStatement ps=con.prepareStatement("SELECT  * FROM product_list");
+               
+                ResultSet rs = ps.executeQuery();
+                while(rs.next())
+                {
+                    String pid = rs.getString(1);
+                    allValues.add(pid);
                     
-                out.println("<table id=\"myTable\" border=1 width=50% height=50% align=center>"
-                        +"<tr>"
-                            + "<th>IMAGE</th>"
-                            + "<th>PRODUCT ID</th>"
-                            + "<th>PRODUCT NAME</th>"
-                            + "<th>PRICE</th>"
-                            +"<th>QUANTITY</th>" 
-                            +"<th>DESCRIPTION</th>"
-                        + "</tr>");
-                 
-                 while(rs.next())
-                 {
-                        
-                        out.println("<tr align=center>"
-                        +"<td><img src=\"" + rs.getString(8) + "\" alt='Girl in a jacket' width=\"100\" height=\"100\"> </td>"
-                        +"<td>"+rs.getString(1)+"</td>"
-                        +"<td>"+rs.getString(2)+"</td>"
-                        +"<td>"+rs.getString(3)+"</td>"
-                        +"<td>"+rs.getString(4)+"</td>"
-                        +"<td>"+rs.getString(5)+"</td>"
-                       +"</tr>");
-                        
+                    
+                }
+                for(int i=0; i < allValues.size();i++){
+                    val=(String) allValues.get(i);
+                  
+                  if(val==id)
+                  {
+           
+                
+                
+                    PreparedStatement ps1=con.prepareStatement("INSERT INTO removed_product  SELECT * FROM product_list WHERE p_id = ?;");
+                    ps1.setString(1, id);
+                
+                    ps1.executeUpdate();
+   
+                    PreparedStatement ps2=con.prepareStatement("DELETE FROM product_list WHERE p_id = ?;");
+                    ps2.setString(1, id);
+                
+                    ps2.executeUpdate();
+                    out.println("<html><head><script>window.alert('RECORD REMOVED');window.location.assign('filterproduct');</script></head></html>");
+                  }
+                  
+                }
+                for (int i = 0; i < id.length(); i++) {
+                char charAt2 = id.charAt(i);
+                if (Character.isLetter(charAt2)) {
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('filterproduct');</script></head></html>");
+                    
+                }
+                }
+               
+                    if( id.equals(""))
+                    {
+                        out.println("<html><head><script>window.alert('CANNOT BE NULL');window.location.assign('filterproduct');</script></head></html>");
                     }
+               
                  
-                 out.println("/<table>");
-                 out.println("<form action='shopproduct'><br><center>  \n" +
-               "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO SHOP : </label></h3><input type='text' name='sid'>\n" +
-             "<button type=\"submit\">ADD</button><br></center></form>"
-                         + "<form action='remcart'><br><center><br>  \n" +
-               "<h3> <label style='color: skyblue'> ENTER THE ID OF PRODUCT TO REMOVE FROM CART : </label></h3><input type='text' name='rid'>   \n" +
-                    "<button type=\"submit\">REMOVE</button><br><br>");
+                
             }
             catch(Exception e)
             {

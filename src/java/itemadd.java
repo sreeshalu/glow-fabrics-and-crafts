@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +38,9 @@ public class itemadd extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String id = request.getParameter("aid");
             String img=request.getParameter("img");
-            out.println(img);
+             ArrayList allValues = new ArrayList();
+             String val=" ";
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -48,6 +52,22 @@ public class itemadd extends HttpServlet {
                 
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
+                
+                PreparedStatement ps3=con.prepareStatement("SELECT  * FROM product_list");
+               
+                ResultSet rs = ps3.executeQuery();
+                while(rs.next())
+                {
+                    String pid = rs.getString(1);
+                    allValues.add(pid);
+                    
+                    
+                }
+                for(int i=0; i < allValues.size();i++){
+                    val=(String) allValues.get(i);
+                  
+                  if(val==id)
+                  {
                 
                 PreparedStatement ps1=con.prepareStatement("INSERT INTO original_product  SELECT * FROM product_list WHERE p_id = ?;");
                 ps1.setString(1, id);
@@ -64,6 +84,21 @@ public class itemadd extends HttpServlet {
                 
                 ps2.executeUpdate();
                 out.println("<html><head><script>window.alert('RECORD ADDED');window.location.assign('filterproduct');</script></head></html>");
+                  }
+                }
+                  for (int i = 0; i < id.length(); i++) {
+                char charAt2 = id.charAt(i);
+                if (Character.isLetter(charAt2)) {
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('filterproduct');</script></head></html>");
+                    
+                }
+                }
+               
+                    if( id.equals(""))
+                    {
+                        out.println("<html><head><script>window.alert('CANNOT BE NULL');window.location.assign('filterproduct');</script></head></html>");
+                    }
+               
 
             }
             catch(Exception e)

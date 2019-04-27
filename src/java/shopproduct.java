@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,9 @@ public class shopproduct extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int id = Integer.parseInt(request.getParameter("sid"));
+            String id = request.getParameter("sid");
+             ArrayList allValues = new ArrayList();
+             String val=" ";
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -47,15 +50,50 @@ public class shopproduct extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
                 
+                PreparedStatement ps=con.prepareStatement("SELECT  * FROM cart");
+               
+                ResultSet rs1 = ps.executeQuery();
+                while(rs1.next())
+                {
+                    String pid = rs1.getString(1);
+                    allValues.add(pid);
+                    
+                    
+                }
+                for(int i=0; i < allValues.size();i++){
+                    val=(String) allValues.get(i);
+                  
+                  if(val==id)
+                  {
+           
+                
                 PreparedStatement ps1=con.prepareStatement("insert into shopproduct SELECT * FROM cart WHERE p_id = ? ");
-                ps1.setInt(1, id);
+                ps1.setString(1, id);
                 ps1.executeUpdate();
                 PreparedStatement ps3=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
-                ps3.setInt(1, id);
+                ps3.setString(1, id);
                 ps3.executeUpdate();
                 out.println("<html><head><script>window.alert('PURCHASED');</script></head></html>");
+                  }
+                }
+                 for (int j = 0; j < id.length(); j++) {
+                char charAt2 = id.charAt(j);
+                if (Character.isLetter(charAt2)) {
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewcustomercart');</script></head></html>");
+                    
+                }
+                }
+               
+                  
+                            if( id.equals(""))
+                    {
+                        out.println("<html><head><script>window.alert('CANNOT BE NULL');window.location.assign('viewcustomercart');</script></head></html>");
+                    }
+                    
+              
+                 
                 PreparedStatement ps2=con.prepareStatement("SELECT * FROM shopproduct  WHERE p_id = ? ");
-                ps2.setInt(1, id);
+                ps2.setString(1, id);
                 ResultSet rs = ps2.executeQuery();
                 out.println("<form action='payment' method='post'>");
                 while(rs.next())

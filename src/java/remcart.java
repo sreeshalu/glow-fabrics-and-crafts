@@ -37,10 +37,13 @@ public class remcart extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
              ArrayList allValues = new ArrayList();
-              ArrayList allValues1 = new ArrayList();
+             ArrayList allValues1 = new ArrayList();
              int val=0;
              int val1=0;
-            int id=Integer.parseInt(request.getParameter("rid"));
+             String id=request.getParameter("rid");
+             out.println(id);
+             ArrayList allValues2 = new ArrayList();
+             String val2=" ";
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -51,46 +54,66 @@ public class remcart extends HttpServlet {
             {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingcart","root","");
-            
-                PreparedStatement ps1=con.prepareStatement("SELECT * FROM cart WHERE p_id = ? ");
-                ps1.setInt(1, id);
-                ResultSet rs = ps1.executeQuery();
-                 while(rs.next())
-                 {
-                   int totqty=rs.getInt(4);
-                    allValues.add(totqty);
-                 }
-                for(int i=0; i < allValues.size();i++)
-                {
-                    val=(int)allValues.get(i);
+         //   PreparedStatement ps6=con.prepareStatement("SELECT  * FROM cart");
+         
+         for (int i = 0; i < id.length(); i++) {
+                char charAt2 = id.charAt(i);
+                if (Character.isLetter(charAt2)) {
+                    out.println("<html><head><script>window.alert('NUMBERS ONLY');window.location.assign('viewcustomercart');</script></head></html>");
+                    
                 }
-                out.println(val);
-                PreparedStatement ps3=con.prepareStatement("SELECT * FROM original_product WHERE p_id = ? ");
-                ps3.setInt(1, id);
-                ResultSet rs1 = ps3.executeQuery();
-                 while(rs1.next())
-                 {
-                   int qty=rs1.getInt(4);
-                    allValues1.add(qty);
-                 }
-                for(int i=0; i < allValues1.size();i++)
-                {
-                    val1=(int)allValues1.get(i);
                 }
-                out.println(val1);
+               
+                    if( id.equals(""))
+                    {
+                        out.println("<html><head><script>window.alert('CANNOT BE NULL');window.location.assign('viewcustomercart');</script></head></html>");
+                    }
+               
+             
+                    PreparedStatement ps1=con.prepareStatement("SELECT * FROM cart WHERE p_id = ? ");
+                     ps1.setString(1, id);
+                    ResultSet rs = ps1.executeQuery();
+                    while(rs.next())
+                    {
+                        int totqty=rs.getInt(4);
+                        allValues.add(totqty);
+                    }
+                    for(int j=0; j < allValues.size();j++)
+                    {
+                        val=(int)allValues.get(j);
+                    }
+                    //out.println(val);
+                    PreparedStatement ps3=con.prepareStatement("SELECT * FROM original_product WHERE p_id = ? ");
+                    ps3.setString(1, id);
+                    ResultSet rs2 = ps3.executeQuery();
+                    while(rs2.next())
+                    {
+                        int qty=rs2.getInt(4);
+                        allValues1.add(qty);
+                    }
+                    for(int k=0; k < allValues1.size();k++)
+                    {
+                        val1=(int)allValues1.get(k);
+                    }
+                    //out.println(val1);
 
-                int curval=val+val1;
-                out.println(curval);
-                PreparedStatement ps4=con.prepareStatement("update original_product set quantity=? where p_id=?");
-                ps4.setInt(1, curval);
-                ps4.setInt(2,id);
-                ps4.executeUpdate();
+                    int curval=val+val1;
+                    out.println(curval);
+                    PreparedStatement ps4=con.prepareStatement("update original_product set quantity=? where p_id=?");
+                    ps4.setInt(1, curval);
+                    ps4.setString(2,id);
+                    ps4.executeUpdate();
                 
-                PreparedStatement ps5=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
-                ps5.setInt(1, id);
-                ps5.executeUpdate();
-                out.println("<html><head><script>window.alert('ITEM REMOVED FROM CART');</script></head></html>");
+                    PreparedStatement ps5=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
+                    ps5.setString(1, id);
+                    ps5.executeUpdate();
+                    out.println("<html><head><script>window.alert('ITEM REMOVED FROM CART');</script></head></html>");
+                  
                 
+                
+                
+               
+            
             }
             catch(Exception e)
             {
@@ -99,6 +122,7 @@ public class remcart extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
