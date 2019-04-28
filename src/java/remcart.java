@@ -107,7 +107,7 @@ public class remcart extends HttpServlet {
                     PreparedStatement ps5=con.prepareStatement("DELETE FROM cart WHERE p_id = ?;");
                     ps5.setString(1, id);
                     ps5.executeUpdate();
-                    out.println("<html><head><script>window.alert('ITEM REMOVED FROM CART');</script></head></html>");
+                    out.println("<html><head><script>window.alert('ITEM REMOVED FROM CART');window.location.assign('viewcustomercart');</script></head></html>");
                   
                 
                 

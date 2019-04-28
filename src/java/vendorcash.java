@@ -60,7 +60,7 @@ public class vendorcash extends HttpServlet {
                             + "<th>PRODUCT NAME</th>"
                             +"<th>PRICE</th>" 
                             +"<th>QUANTITY</th>"
-                            +"<th>TOTAL</th>"
+                            
                             +"<th>VENDOR AMOUNT</th>"
                         + "</tr>");
                  
@@ -72,7 +72,7 @@ public class vendorcash extends HttpServlet {
                         +"<td>"+rs.getString(2)+"</td>"
                         +"<td>"+rs.getInt(3)+"</td>"
                         +"<td>"+rs.getInt(4)+"</td>"
-                        +"<td>"+rs.getInt(5)+"</td>"
+                        
                         +"<td>"+rs.getInt(10)+"</td>"
                         +"</tr>");
                         
